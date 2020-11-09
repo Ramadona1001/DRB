@@ -1,0 +1,197 @@
+﻿@model EF.Models.OrdersTb;
+@{
+    ViewBag.Title = "حدد عنوانك";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+
+}
+
+<div class="content-heading">
+    <div>ادخل عنوانك لاستلام الشحنة<small></small></div>
+</div>
+
+<div class="card card-default">
+    <div class="card-heading"></div>
+    @if (Model != null)
+    {
+        <div class="card-body">
+
+            @using (Html.BeginForm("Save", "Client", FormMethod.Post, new { @id = "LogForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4></h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                            @if (ViewBag.success != null && ViewBag.success != "")
+                            {
+                                <div class="alert alert-success alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.success </b></div>
+                            }
+                            @if (ViewBag.error != null && ViewBag.error != "")
+                            {
+                                <div class="alert alert-danger alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.error </b></div>
+                            }
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderNumber, "رقم الشحنة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OrderNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.OrderNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderItemsList, "الطرود", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @if (Model.OrderItemsList != null && Model.OrderItemsList.Count() > 0)
+                            {
+                                foreach (var item in Model.OrderItemsList)
+                                {
+                                    <span style="padding-left:5px" class="badge badge-info">@item</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientPhone, "رقم هاتفك المربوط بالشحنة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClientPhone, new { htmlAttributes = new { @class = "form-control", id = "MyPhone" } })
+                            @Html.ValidationMessageFor(model => model.ClientPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientConfirmCode, "كود التأكيد المرسل لهاتفك", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClientConfirmCode, new { htmlAttributes = new { @class = "form-control", id = "MyCode" } })
+                            @Html.ValidationMessageFor(model => model.ClientConfirmCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientCityIdFk, "مدينة الإستلام", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ClientCityIdFk", null, htmlAttributes: new { @class = "form-control CitySelection" })
+                            @Html.ValidationMessageFor(model => model.ClientCityIdFk, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientAddress, "عنوان الإستلام", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClientAddress, new { htmlAttributes = new { @class = "form-control", id = "MyAddress" } })
+                            @Html.ValidationMessageFor(model => model.ClientAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LatLng, "Lat,Lng العنوان على الخريطة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LatLng, new { htmlAttributes = new { @class = "form-control", id = "MyLatLng", @placeholder = "lat,lng" } })
+                            @Html.ValidationMessageFor(model => model.LatLng, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DeliveryDate, "الموعد المناسب للاستلام", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="datetime-local" class="form-control" id="MyDate" name="DeliveryDate" />
+                            @Html.ValidationMessageFor(model => model.DeliveryDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.ClientLat, new { @class = "form-control", id = "MyLat" })
+                    @Html.HiddenFor(model => model.ClientLng, new { @class = "form-control", id = "MyLng" })
+                    @Html.HiddenFor(model => model.tokenId, new { @class = "form-control", })
+                    @*@Html.HiddenFor(c => c.Lat, htmlAttributes: new { id = "MyLat" })
+                        @Html.HiddenFor(c => c.Lng, htmlAttributes: new { id = "MyLng" })*@
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div id="map" style="position: initial !important;height: 300px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="حفظ" onclick="formsubmit(); return false;" class="btn btn-sm btn-secondary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="card-body">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                    <div class="alert alert-danger alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b>غير مسموح استعراض هذه الصفحة</b></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section scripts{
+    <script>
+        function formsubmit() {
+
+            if ($("#MyLatLng").val().trim() == "" || $("#MyAddress").val().trim() == "" || $("#MyDate").val().trim() == "" || $("#MyPhone").val().trim() == "" || $("#MyCode").val().trim() == "") {
+                swal("", "الرجاء التحقق من ادخال جميع الحقول وكتابة خطوط الطول والعرض او تحديدها على الخريطة");
+                return;
+            }
+
+            if ($("#MyLatLng").val().trim() != "" && $("#MyLatLng").val().split(",").length != 2) {
+                swal("", "الرجاء التحقق من وضع فاصلة بين خط الطول والعرض مثل lat,lng");
+                return;
+            }
+
+            $("#LogForm").submit();
+        }
+    </script>
+    <script>
+        var rectangle;
+        var map;
+        var infoWindow;
+        var marker;
+
+        function initMap(lat, lng) {
+            var loc = { lat: parseFloat(lat), lng: parseFloat(lng) };
+            lng = lng || 46.6869141;
+            lat = lat || 24.78523;
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: lat, lng: lng },
+                zoom: 9
+            });
+            //var loc = lat + "," + lng;
+            placeMarker(loc);
+            function placeMarker(location) {
+                if (marker) {
+                    marker.setPosition(location);
+                } else {
+                    marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                }
+            }
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                placeMarker(event.latLng);
+                $("#MyLat").val(event.latLng.lat())
+                $("#MyLng").val(event.latLng.lng())
+                $("#MyLatLng").val("" + event.latLng.lat() + "," + event.latLng.lng());
+            });
+        }
+        $(document).on("keyup", "#MyLatLng", function () {
+            if ($("#MyLatLng").val().trim() != "" && $("#MyLatLng").val().split(",").length == 2) {
+                var spl = $("#MyLatLng").val().split(",");
+                if (jQuery.isNumeric(spl[0]) && jQuery.isNumeric(spl[1]))
+                    initMap(Number(spl[0]), Number(spl[1]));
+            }
+        });
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFbOlYJGgm5Q-Zj-nSv-dj6aFjMs8YeSU&callback=initMap">
+    </script>
+}

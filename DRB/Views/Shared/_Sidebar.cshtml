@@ -1,0 +1,103 @@
+﻿@{
+    var roleid = Context.Request.Cookies.FirstOrDefault(c => c.Key == "UserRule").Value;
+}
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+    <nav class="sidebar" data-sidebar-anyclick-close="">
+        <!-- START sidebar nav-->
+        <ul class="sidebar-nav">
+            <!-- START user info-->
+            <li class="has-user-block">
+                <div class="collapse show" id="user-block" style="">
+                    <div class="item user-block">
+                        <!-- User picture-->
+                        <div class="user-block-picture">
+                            <div class="user-block-status">
+                                <img class="img-thumbnail rounded-circle" src="/img/avatar.jpg" alt="Avatar" width="60" height="60" onclick="document.location.href='/Users/Edit'">
+                            </div>
+                        </div><!-- Name and Job-->
+                        <div class="user-block-info">
+                            <span class="user-block-name">
+                                @(Context.Request.Cookies.FirstOrDefault(c => c.Key == "UserName").Value)
+                            </span>
+                            @if (roleid == "1")
+                            {
+                                <span class="user-block-role">
+                                    أدمن
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- END user info-->
+            <!-- Iterates over all sidebar items-->
+            @if (Context.Request.Cookies.FirstOrDefault(c => c.Key == "UserRule").Value == "1")
+            {
+                <li class="@Html.isActive("Index", "Dashboard")">
+                    <a href="@Url.Action("Index", "Dashboard")" title="الرئيسية">
+                        <em class="fas fa-home"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">الرئيسية</span>
+                    </a>
+                </li>
+                <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS"></span></li>
+                <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS">إدارة الأعمال</span></li>
+                
+                @*<li class="@Html.isActive("Index", "Users")">
+                    <a href="@Url.Action("Index", "Users")" title="إدارة مستخدمين النظام">
+                        <em class="fas fa-users-cog"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">إدارة مستخدمين النظام</span>
+                    </a>
+                </li>*@
+
+
+                <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS"></span></li>
+                <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS">إعدادات بناء النظام</span></li>
+
+                <li class="@Html.isActive("Index", "Strings")">
+                    <a href="@Url.Action("Index", "Strings")" title="متغيرات النظام">
+                        <em class="fas fa-cogs"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">متغيرات النظام</span>
+                    </a>
+                </li>
+
+
+                <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS"></span></li>
+                <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS">إعدادات المحتوى</span></li>
+                
+                <li class="@Html.isActive("Index", "About")">
+                    <a href="@Url.Action("Index", "About")" title="من نحن">
+                        <em class="fas fa-info-circle"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">من نحن</span>
+                    </a>
+                </li>
+                <li class="@Html.isActive("Index", "ContactUs")">
+                    <a href="@Url.Action("Index", "ContactUs")" title="إتصل بنا">
+                        <em class="fas fa-phone"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">إتصل بنا</span>
+                    </a>
+                </li>
+                <li class="@Html.isActive("Index", "TermsAndConditions")">
+                    <a href="@Url.Action("Index", "TermsAndConditions")" title="الشروط والأحكام">
+                        <em class="fas fa-allergies"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">الشروط والأحكام</span>
+                    </a>
+                </li>
+            }
+           
+            <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS"></span></li>
+            <li class="nav-heading"><span data-localize="sidebar.heading.COMPONENTS">حسابي</span></li>
+            <li class="">
+                <a href="#" onclick='document.forms["formout"].submit(); return false;' title="خروج">
+                    <em class="fas fa-lock"></em>
+                    <span data-localize="sidebar.nav.WIDGETS">خروج</span>
+                </a>
+            </li>
+
+
+        </ul>
+        @using (Html.BeginForm("Logout", "Admin", FormMethod.Post, new { @id = "formout" })) { }
+        <!-- END sidebar nav-->
+    </nav>
+</div>
+<!-- END Sidebar (left)-->

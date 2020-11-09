@@ -1,0 +1,126 @@
+﻿@model EF.Models.SettingsTb
+
+@{
+    ViewBag.Title = "الشروط والأحكام";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    string l1 = "الشروط والأحكام";
+    string l21 = "الشروط والأحكام";
+    string l22 = "الشروط والأحكام للمناديب";
+    string l6 = "حفظ";
+
+}
+
+<div class="content-heading">
+    <div>@l1 <small></small></div>
+</div>
+<div class="card card-default">
+    <div class="card-heading"><h2> </h2></div>
+    <div class="card-body">
+        @using (Html.BeginForm("Index", "TermsAndConditions", FormMethod.Post, new { @id = "LogForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                        @if (ViewBag.success != null && ViewBag.success != "")
+                        {
+                            <div class="alert alert-success alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.success </b></div>
+                        }
+                        @if (ViewBag.error != null && ViewBag.error != "")
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.error </b></div>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TermsAndConditionsAr, l21, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.TermsAndConditionsAr, new { @class = "form-control AR1" })
+                        @Html.ValidationMessageFor(model => model.TermsAndConditionsAr, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.TermsAndConditionsDriversAr, l22, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.TermsAndConditionsDriversAr, new { @class = "form-control AR2" })
+                        @Html.ValidationMessageFor(model => model.TermsAndConditionsDriversAr, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="text-align:center;">
+                        <input type="submit" value="@l6" onclick="formsubmitTerms(); return false;" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/AdminArea/modules/about-contact-terms-module1.0.js"></script>
+    <script src="~/tinymc/tinymce.min.js"></script>
+    <script>
+        function tinymceinit(inputid) {
+            tinymce.init({
+                theme_advanced_font_sizes: "10px,12px,13px,14px,16px,18px,20px",
+                font_formats: "Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n",
+                font_size_style_values: "12px,13px,14px,16px,18px,20px",
+                language: 'ar',
+                selector: 'textarea',
+                theme: "modern",
+                height: 400,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality template paste textcolor"
+                ],
+                toolbar: "sizeselect |  fontsizeselect | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link pickimage | print preview media fullpage | forecolor backcolor",
+                style_formats: [
+                    { title: 'نص عريض', inline: 'b' },
+                    { title: 'نص أحمر', inline: 'span', styles: { color: '#ff0000' } },
+                    { title: 'عنوان أحمر', block: 'h1', styles: { color: '#ff0000' } },
+                    { title: 'خط tahoma', inline: 'span', classes: 'tahoma' },
+                    { title: 'خط droid', inline: 'span', classes: 'font' },
+                ],
+                setup: function (ed) {
+                    // Add a custom button
+                    //ed.addButton('pickimage', {
+                    //    title: 'ادراج صورة',
+                    //    icon: 'image',
+                    //    onclick: function () {
+                    //        pickimage('');
+                    //        pickimagecalback = function (url) {
+                    //            ed.focus();
+                    //            ed.selection.setContent("<img src='" + url + "' alt='' width='300'/>");
+                    //            pickimagecalback = undefined;
+                    //        }
+                    //    }
+                    //});
+                }
+            });
+        }
+        var pickimagecalback = function (url) { };
+        var $pickimageto = "";//$ selector
+        function pickimage(pickto, calback) {
+            calback = calback || function () { }
+            $pickimageto = pickto;
+            window.open('imageuploader.aspx?pick=yes', '', 'width=810,height=600,left=50,top=50,resizable=no,menubar=no,location=no,scrollbars=yes');
+        }
+        function imagepicked(url) {
+            pickimagecalback(url);
+            $($pickimageto).val(url);
+        }
+        function pickme(xthis) {
+            window.opener.imagepicked($(xthis).parent().find(".input-group .form-control").val());
+            window.close();
+        }
+
+        tinymceinit("");
+    </script>
+}

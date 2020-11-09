@@ -1,0 +1,141 @@
+﻿<div class="page" data-name="signup">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                {{#if ContentData.BackAppear}}
+                <a class="link icon-only back gotoLogin">
+                    <i class="f7-icons">chevron_left</i>
+                </a>
+                {{else}}
+                <a class="link icon-only">
+                </a>
+                {{/if}}
+            </div>
+            <div class="title"><img src="img/logo.png" class="nav-logo"></div>
+            <div class="right ">
+                <a href="#" class="link icon-only" style="pointer-events: none;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+
+        <div class="page-holder">
+
+            <div class="avatar-holder">
+                <p class="intro-title-auth">
+                    <i class="f7-icons">person_crop_circle_badge_plus</i>
+                    حساب جديد
+                </p>
+                <span class="avatar-img-holder">
+                    <img src="img/avatar.png" id="profilemage">
+                </span>
+                <a class="btn-upload ProfileTitle" onclick="ChooseSinglePicture('profilemage', true);">رفع صورة العلامة التجارية</a>
+            </div>
+            <div class="input-holder">
+                <input type="text" class="my-input FullName" placeholder="{{js "localStorage.lang=='en' ? 'Full Name' : 'الاسم بالكامل'"}}">
+            </div>
+            <div class="input-holder">
+                <input class="my-input ClientMobileInput" onkeypress='return isNumberKey(event);' type="number" placeholder="{{js "localStorage.lang=='en' ? 'Phone number' : 'رقم الجوال'"}}">
+            </div>
+            <div class="input-holder">
+                <input type="email" class="my-input Email" placeholder="{{js "localStorage.lang=='en' ? 'Email' : 'البريد الالكتروني'"}}">
+            </div>
+
+            <div class="input-holder">
+                <input type="password" class="my-input PasswordNeSign" placeholder="{{js "localStorage.lang=='en' ? 'Password' : 'كلمة المرور'"}}">
+            </div>
+
+            <div class="input-holder">
+                <input type="password" class="my-input PasswordNeSignRe" placeholder="{{js "localStorage.lang=='en' ? 'Confirm password' : 'تأكيد كلمة المرور'"}}">
+            </div>
+            <div class="input-holder AppearForMerchant">
+                <input type="text" class="my-input MaroofUrlOrNumber" placeholder="{{js "localStorage.lang=='en' ? 'MaroofUrlOrNumber' : 'رقم او رابط معروف'"}}">
+            </div>
+
+            <div class="input-holder AppearForMerchant">
+                <select class="my-select MerchantTypeId">
+                    <option value="1">مالك</option>
+                    <option value="2">موظف</option>
+                </select>
+            </div>
+            <div class="input-holder">
+                <select class="my-select SelectedCity">
+                    <option value="0">المدينة</option>
+                </select>
+            </div>
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <input type="text" class="my-input CarType" placeholder="{{js "localStorage.lang=='en' ? 'Car Type' : 'نوع السيارة'"}}">
+            </div>
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <input type="text" class="my-input CarColor" placeholder="{{js "localStorage.lang=='en' ? 'Car Color' : 'لون السيارة'"}}">
+            </div>
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <input type="text" class="my-input CarNumber" placeholder="{{js "localStorage.lang=='en' ? 'Car Number' : 'رقم لوحة السيارة'"}}">
+            </div>
+
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <a class="btn-blue" onclick="ChooseSinglePicture('DrivingLicenseImage', false);">{{js "localStorage.lang=='en' ? 'صورة الرخصة +' : 'صورة الرخصة +'"}}</a>
+                <span class="Driver-Images">
+                    <img src="img/avatar.png" id="DrivingLicenseImage">
+                </span>
+            </div>
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <a class="btn-blue" onclick="ChooseSinglePicture('CarImage', false);">{{js "localStorage.lang=='en' ? 'صورة السيارة +' : 'صورة السيارة +'"}}</a>
+                <span class="Driver-Images">
+                    <img src="img/avatar.png" id="CarImage">
+                </span>
+            </div>
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <a class="btn-blue" onclick="ChooseSinglePicture('DrivingNationalityImage', false);">{{js "localStorage.lang=='en' ? 'صورة الهوية +' : 'صورة الهوية +'"}}</a>
+                <span class="Driver-Images">
+                    <img src="img/avatar.png" id="DrivingNationalityImage">
+                </span>
+            </div>
+
+            <div class="input-holder AppearForDriver" style="display:none;">
+                <a class="btn-blue" onclick="ChooseSinglePicture('CarFormImage', false);">{{js "localStorage.lang=='en' ? 'صورة الاستمارة +' : 'صورة الاستمارة +'"}}</a>
+                <span class="Driver-Images">
+                    <img src="img/avatar.png" id="CarFormImage">
+                </span>
+            </div>
+
+            <label class="item-checkbox item-content my-checked">
+                <input type="checkbox" id="agreement" name="demo-checkbox" value="Books">
+                <i class="icon icon-checkbox"></i>
+                <div class="item-inner">
+                    <div class="item-title">
+                        <p class="my-checked-label">
+                            {{js "localStorage.lang=='en' ? 'I have read and agree to' : 'لقد قرأت و وافقت على'"}} <a class="GotoTermsPage">
+                                {{js "localStorage.lang=='en' ? 'Terms and Conditions' : 'الشروط و الأحكام'"}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </label>
+
+            <div class="input-holder" style="height:130px;">
+            </div>
+
+            <div class="shipping-holder" style="bottom: 35px !important;">
+                <a class="btn-white SignupBtn">{{js "localStorage.lang=='en' ? 'Register' : 'إنشاء حساب'"}}</a>
+                <a class="creatacc-dark gotoLogin" style="font-size:13px;">{{js "localStorage.lang=='en' ? 'Already have an account? Login' : 'لديك حساب مسبق ؟ تسجيل دخول'"}}</a>
+            </div>
+
+        </div>
+    </div>
+
+    <ul class="fixed-footer">
+        <li name="1" class="RegType RegTypeMerchant {{ContentData.merchant}}"><img src="img/wallet.png"><span>تاجر</span></li>
+        <li name="2" class="RegType RegTypeDriver {{ContentData.driver}}"><img src="img/truck.png"><span>سائق</span></li>
+    </ul>
+
+</div>

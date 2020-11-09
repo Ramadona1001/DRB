@@ -1,0 +1,104 @@
+﻿<div class="page" data-name="merchantcompletedata">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="link icon-only GoToBackPage">
+                    <i class="f7-icons">chevron_left</i>
+                </a>
+            </div>
+            <div class="title"><img src="img/logo.png" class="nav-logo"></div>
+            <div class="right ">
+                <a href="#" class="link icon-only panel-open" data-panel="right">
+                    <i class="f7-icons">bars</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        <div class="page-holder loader-holder">
+            <div class="avatar-holder">
+                <p class="intro-title-auth">
+                    <i class="f7-icons">person_crop_circle_badge_checkmark</i>
+                    ملفي الشخصي
+                </p>
+            </div>
+
+            <div class="card skeleton-text skeleton-effect-fade">
+                <div class="card-header">Card Header</div>
+                <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                <div class="card-footer">Card Footer</div>
+            </div>
+            <div class="card skeleton-text skeleton-effect-fade">
+                <div class="card-header">Card Header</div>
+                <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                <div class="card-footer">Card Footer</div>
+            </div>
+
+        </div>
+
+        <div class="page-holder main-holder" style="display:none;">
+
+            <div class="avatar-holder">
+                <p class="intro-title-auth">
+                    <i class="f7-icons">person_crop_circle_badge_checkmark</i>
+                    ملفي الشخصي
+                </p>
+            </div>
+
+            <div class="input-holder">
+                <input type="text" class="my-input FullName" placeholder="{{js "localStorage.lang=='en' ? 'اسم المتجر' : 'اسم المتجر'"}}">
+            </div>
+
+            <div class="input-holder">
+                <a class="my-select-multi item-link smart-select smart-select-init smart-select-cats" data-open-in="popover">
+                    <select name="car" multiple class="SelectedCat">
+                    </select>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">تصنيف المتجر</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="input-holder">
+                <select class="my-select SelectedNumOfDailyOrders">
+                    <option value="0">عدد الطلبات المتوقعة يومياً</option>
+                </select>
+            </div>
+
+            <div class="input-holder">
+                <select class="my-select SelectedPackageSize">
+                    <option value="0">حجم الطرد</option>
+                </select>
+            </div>
+
+            <div class="input-holder">
+                <select class="my-select SelectedPrepaedTimes">
+                    <option value="0">اوقات تجهيز الطرود</option>
+                </select>
+            </div>
+
+            <div class="input-holder">
+                <input type="text" class="my-input CommercialNum" placeholder="{{js "localStorage.lang=='en' ? 'رقم السجل التجاري' : 'رقم السجل التجاري'"}}">
+            </div>
+
+
+            <div class="gray-holder">
+                <p class="page-title-div"> المستودعات  <a class="btn-filter goToAddStorePopup"><i class="f7-icons" style=" color: #824ef6; ">plus_circle_fill</i></a></p>
+                <div class="stores-list-container">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <a class="shipping-holder0 btn-blue SaveMerchantCompleteData">{{js "localStorage.lang=='en' ? 'Save' : 'حفظ'"}}</a>
+
+</div>

@@ -1,0 +1,257 @@
+﻿@font-face {
+    font-family: 'Cairo';
+    src: url('../../fonts/Cairo-Regular.eot');
+    src: url('../../fonts/Cairo-Regular.eot?#iefix') format('embedded-opentype'), url('../../fonts/Cairo-Regular.woff2') format('woff2'), url('../../fonts/Cairo-Regular.woff') format('woff'), url('../../fonts/Cairo-Regular.ttf') format('truetype'), url('../../fonts/Cairo-Regular.svg#Cairo-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../fonts/Cairo-SemiBold.eot');
+    src: url('../../fonts/Cairo-SemiBold.eot?#iefix') format('embedded-opentype'), url('../../fonts/Cairo-SemiBold.woff2') format('woff2'), url('../../fonts/Cairo-SemiBold.woff') format('woff'), url('../../fonts/Cairo-SemiBold.ttf') format('truetype'), url('../../fonts/Cairo-SemiBold.svg#Cairo-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body, *:not(i):not(em):not(.fa):not(.fas):not(.wrap-icon span) {
+    font-family: 'Cairo' !important;
+    /*color: #5a5a5a;
+    font-size: 14px;
+    height: 100%;
+    direction: rtl;
+    margin: 0;
+    line-height: 1.42857143;
+    background-color: #efefef;*/
+}
+
+.card .card-body {
+    overflow-x: auto;
+}
+
+
+.card .card-body table {
+    min-width: 900px;
+}
+
+.timer {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #666666 !important;
+    font-size: 14px;
+}
+
+.timer span {
+    background: transparent;
+    border: none;
+}
+
+.timer span span {
+    margin: 0 2px;
+    font-size: 14px;
+}
+
+
+#timerOfChat {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #666666 !important;
+    font-size: 13px;
+}
+
+#timerOfChat span {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #666666 !important;
+    font-size: 13px;
+    padding: 5px 0;
+}
+
+#timerOfChat span span {
+    margin: 0 2px;
+    font-size: 13px;
+}
+
+a.btn-green {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    background-image: linear-gradient(18deg, rgb(183, 206, 110) 0%, rgb(109, 123, 65) 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 5px 25px 8px;
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.coupon-holder {
+    display: flex;
+    padding: 0;
+    align-items: center;
+}
+
+.coupon-holder input {
+    /* height: 100%; */
+    /* padding: 0 10px; */
+    /* width: 100%; */
+    /* margin: 0 0 0 20px; */
+    /* outline: none; */
+    /* border: none; */
+    margin: 0 !important;
+}
+
+.coupon-holder a {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    background-image: linear-gradient(18deg, rgb(183, 206, 110) 0%, rgb(109, 123, 65) 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 5px 25px 8px;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    margin: 0 20px;
+}
+
+#TotalPrice {
+    margin: 15px 0;
+}
+
+#TotalPrice div:last-of-type {
+    color: #92a555;
+    font-weight: bold;
+}
+
+.pagination-container {
+    text-align: center;
+    float: none;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination {}
+
+.pagination li {}
+
+.pagination li a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-color: #6d7b41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    border-radius: 9px;
+    color: #fff;
+    background-image: linear-gradient(18deg, rgb(183, 206, 110) 0%, rgb(109, 123, 65) 100%);
+}
+
+.pagination li.active a {
+    color: #fff;
+    background-image: linear-gradient(18deg, rgb(233, 119, 35) 0%, rgb(253, 208, 10) 100%);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.a-btn-orange a, .ReturnCls  {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    background-image: linear-gradient(18deg, rgb(253, 208, 10) 0%, rgb(233, 119, 35) 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 5px 25px 8px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+.btn-green {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    background-image: linear-gradient(18deg, rgb(183, 206, 110) 0%, rgb(109, 123, 65) 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 5px 25px 8px;
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+
+.form-group .btn-default, .form-group .btn-primary {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    background-image: linear-gradient(18deg, rgb(183, 206, 110) 0%, rgb(109, 123, 65) 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 5px 25px 8px;
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: none;
+    font-family: 'Cairo' !important;
+}
+
+.my-input {
+    height: 33px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 15px;
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    outline: none;
+    margin-bottom: 20px;
+    border: 1px solid #d7d7d7;
+    -webkit-appearance: none;
+}
+
+
+.my-select {
+    height: 33px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 15px;
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    outline: none;
+    margin-bottom: 20px;
+    border: 1px solid #d7d7d7;
+    -webkit-appearance: none;
+}
+
+.my-label {
+    margin: 6px 0;
+    font-weight: normal;
+    float: right;
+}
+
+.my-row {
+    margin: 30px 0;
+}
+
+.my-textarea {
+    height: 33px;
+    border-radius: 20px;
+    border: none;
+    padding: 15px;
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.14);
+    outline: none;
+    margin-bottom: 20px;
+    height: 100px;
+    resize: vertical;
+    border: 1px solid #d7d7d7;
+    -webkit-appearance: none;
+}
+
+.holder-check {
+    overflow: hidden;
+}

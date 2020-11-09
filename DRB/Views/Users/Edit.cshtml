@@ -1,0 +1,101 @@
+﻿@model EF.Models.UserTb
+
+@{
+    ViewBag.Title = @ViewBag.title;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-heading">
+    <div> @ViewBag.title <small></small></div>
+</div>
+<div class="card card-default">
+    <div class="card-heading"></div>
+    <div class="card-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4></h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsActive)
+                @Html.HiddenFor(model => model.CreationDate)
+                @Html.HiddenFor(model => model.IsDeleted)
+                @Html.HiddenFor(model => model.ConfirmCode)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                        <div style="display:@ViewBag.Error" class="alert alert-danger alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.ErrorMsg </b></div>
+                        <div style="display:@ViewBag.Success" class="alert alert-success alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.ErrorMsg </b></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FullName, "الإسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control I1" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mobile, "رقم الهاتف", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control I2" } })
+                        @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailAddress, "الإيميل", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control I3" } })
+                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, "كلمة المرور", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control I4" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @if (Context.Request.Cookies.FirstOrDefault(c => c.Key == "UserRule").Value == "1")
+                {
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.RuleId, "المسمى الوظيفي", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("RuleId", null, htmlAttributes: new { @class = "form-control RoleSelection" })
+                                @Html.ValidationMessageFor(model => model.RuleId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+                    <span>
+                        @Html.HiddenFor(c => c.RuleId)
+                    </span>
+                }
+                @if (Context.Request.Cookies.FirstOrDefault(c => c.Key == "UserRule").Value != "1")
+                {
+                    <span>
+                        @Html.HiddenFor(c => c.RuleId)
+                    </span>
+                }
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="text-align:center;">
+                        <input type="submit" value="حفظ" class="btn btn-info" />
+                    </div>
+                </div>
+
+            </div>
+        }
+        <div>
+            @*@Html.ActionLink("رجوع", "Index")*@
+        </div>
+    </div>
+</div>

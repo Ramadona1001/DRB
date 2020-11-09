@@ -1,0 +1,32 @@
+﻿<div class="page" data-name="login">
+
+    <div class="page-content">
+
+        <div class="page-holder">
+            <!--<p class="intro-title-auth-dark">
+                <i class="f7-icons">person_crop_circle</i> {{js "localStorage.lang=='en' ? 'Login' : 'تسجيل دخول'"}}
+            </p>-->
+
+            <div class="holder-white text-center">
+                <img src="img/side-logo.png" class="center-logo">
+            </div>
+
+
+            <div class="input-holder">
+                <input onkeypress='return isNumberKey(event);' type="number" class="my-input MobileNumber" placeholder="{{js "localStorage.lang=='en' ? 'Phone number' : 'رقم الجوال'"}}">
+            </div>
+
+            <div class="input-holder">
+                <input type="password" class="my-input Password" placeholder="{{js "localStorage.lang=='en' ? 'Password' : 'كلمة المرور'"}}">
+            </div>
+
+
+            <a href="#" class="btn-blue LoginBtn">{{js "localStorage.lang=='en' ? 'Login' : 'تسجيل دخول'"}}</a>
+            <div class="login-links">
+                <a class="creatacc GotoRegisterPage">{{js "localStorage.lang=='en' ? 'Register new account' : 'إنشاء حساب جديد'"}} </a>
+                <a class="forget-pass GotoForgetPasswordPage">{{js "localStorage.lang=='en' ? 'Forget password ?' : 'نسيت كلمة المرور ؟'"}}</a>
+            </div>
+
+        </div>
+    </div>
+</div>

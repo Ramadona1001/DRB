@@ -1,0 +1,76 @@
+﻿<div class="page" data-name="myprofile">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="link icon-only back">
+                    <i class="f7-icons">chevron_left</i>
+                </a>
+            </div>
+            <div class="title"><img src="img/logo.png" class="nav-logo"></div>
+            <div class="right ">
+                <a href="#" class="link icon-only panel-open" data-panel="right">
+                    <i class="f7-icons">bars</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content ">
+        <div class="page-content-gray">
+            <p class="page-title">{{js "localStorage.lang=='en' ? 'My Account' : 'حسابي'"}}</p>
+
+            <div class="q-holder accordion-list">
+                <ul>
+                    <li class="q-item q-item-profile accordion-item" style="background: white;">
+                        <div href="#" class="item-content item-link">
+                            <div class="q-title">{{js "localStorage.lang=='en' ? 'Change password' : 'تغيير كلمة المرور'"}}</div>
+                            <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                        </div>
+                        <div class="q-dec accordion-item-content">
+                            <div class="white-holder">
+                                <input class="my-input editpassold" placeholder="{{js "localStorage.lang=='en' ? 'Current password' : 'كلمة المرور الحالية'"}}" type="password" style="text-align: center;">
+                                <input class="my-input editpassnew" placeholder="{{js "localStorage.lang=='en' ? 'New password' : 'كلمة المرور الجديدة'"}}" type="password" style="text-align: center;">
+                                <a href="#" class="btn-green EditChangePassword">{{js "localStorage.lang=='en' ? 'Save' : 'حفظ'"}}</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="q-item q-item-profile accordion-item" style="background: white;">
+                        <div href="#" class="item-content item-link">
+                            <div class="q-title">{{js "localStorage.lang=='en' ? 'Change phone number' : 'تغيير رقم الهاتف'"}}</div>
+                            <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                        </div>
+                        <div class="q-dec accordion-item-content">
+                            <div class="white-holder">
+                                <input class="my-input ClientMobileInput" onkeypress='return isNumberKey(event);' value="{{ContentData.Phone}}" placeholder="{{js "localStorage.lang=='en' ? 'Phone number' : 'رقم الهاتف'"}}" type="number" style="text-align: center;">
+                                <a href="#" class="btn-green mobilesaveedit">{{js "localStorage.lang=='en' ? 'Save' : 'حفظ'"}}</a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="q-item q-item-profile accordion-item" style="background: white;">
+                        <div href="#" class="item-content item-link">
+                            <div class="q-title">{{js "localStorage.lang=='en' ? 'Language' : 'اللغة'"}}</div>
+                            <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                        </div>
+                        <div class="q-dec accordion-item-content">
+                            <div class="profile-setting-holder">
+                                <div class="check-setting">
+                                    <input class="styled-checkbox arabicchecked atabicEnglishCheck" id="styled-radio-1" type="radio" name="drone" {{js "localStorage.lang=='en' ? '' : 'checked'"}}>
+                                    <label for="styled-radio-1">عربي</label>
+                                </div>
+                                <div class="check-setting">
+                                    <input class="styled-checkbox englishchecked atabicEnglishCheck" id="styled-radio-2" type="radio" name="drone" {{js "localStorage.lang=='en' ? 'checked' : ''"}}>
+                                    <label for="styled-radio-2">English</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

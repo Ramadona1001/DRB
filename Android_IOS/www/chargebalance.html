@@ -1,0 +1,34 @@
+﻿<div class="page" data-name="chargebalance">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="link icon-only back">
+                    <i class="f7-icons">chevron_left</i>
+                </a>
+            </div>
+            <div class="title" style="left: 0px;color: #fff;">شحن رصيد</div>
+            <div class="right ">
+                <a href="#" class="link icon-only" style="pointer-events: none;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="page-holder">
+
+            <div class="input-holder">
+                <input class="my-input BalanceValue" onkeypress='return isNumberKey(event);' type="number" placeholder="{{js "localStorage.lang=='en' ? 'المبلغ' : 'المبلغ'"}}">
+            </div>
+
+            <div class="gray-holder">
+                <p class="page-title-div"> طريقة الدفع  <a class="btn-filter goToAddPaymentMethodPopup2"><i class="f7-icons" style=" color: #824ef6; ">plus_circle_fill</i></a></p>
+                <div class="paymenttype-container">
+
+                </div>
+            </div>
+
+            <a href="#" class="btn-blue ConfirmChargeBalance" data-id="{{id}}">{{js "localStorage.lang=='en' ? 'تأكيد' : 'تأكيد'"}}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@{
+    var theme = "AdminArea/css/theme-g.css";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin App">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <title> @ViewBag.Title </title>
+    <!-- =============== VENDOR STYLES ===============-->
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/brands.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/regular.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/solid.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/animate.css/animate.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/whirl/dist/whirl.css" rel="stylesheet" />
+    <link href="~/AdminArea/css/awsf.css" rel="stylesheet" />
+
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link href="~/AdminArea/css/bootstrap-rtl.css" rel="stylesheet" type="text/css" id="bscss" />
+    <link href="~/AdminArea/Vendor/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <!-- =============== APP STYLES ===============-->
+    <link href="~/AdminArea/css/app-rtl.css" rel="stylesheet" type="text/css" id="maincss" />
+    <link href="~/@theme" rel="stylesheet" id="autoloaded-stylesheet" />
+    <link href="~/AdminArea/css/CustomStyle2.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link href="~/css/awsf.css" rel="stylesheet" />
+    <style>
+        .brand-logo-collapsed .img-fluid, .brand-logo .img-fluid {
+            height: 42px !important;
+            border-radius: 7px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+
+        <!-- Main section-->
+        <section class="section-container">
+            <!-- Page content-->
+            <div class="content-wrapper">
+                @RenderBody()
+            </div>
+        </section>
+        <!-- Page footer-->
+        <footer class="footer-container">
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <script src="~/AdminArea/Vendor/modernizr/modernizr.custom.js"></script>
+    <script src="~/AdminArea/Vendor/js-storage/js.storage.js"></script>
+    <script src="~/AdminArea/Vendor/screenfull/dist/screenfull.js"></script>
+    <script src="~/AdminArea/Vendor/jquery/dist/jquery.js"></script>
+    <script src="~/AdminArea/vendor/popper.js/dist/umd/popper.js"></script>
+    <script src="~/AdminArea/Vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/AdminArea/Vendor/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- =============== APP SCRIPTS ===============-->
+    <script src="~/AdminArea/js/app.js"></script>
+    <script src="~/AdminArea/js/custom-awsf.js"></script>
+    <script src="~/AdminArea/js/bootbox.min.js"></script>
+    <script src="~/js/custom-awsf.js"></script>
+    <script src="~/AdminArea/js/global.js"></script>
+    <link href="~/AdminArea/ajax/jquery.gritter.css" rel="stylesheet" />
+    <script src="~/AdminArea/ajax/jquery.gritter.min.js"></script>
+    <script>
+        if ($("a:contains('عودة')").length > 0) {
+            $("a:contains('عودة')").addClass("ReturnCls")
+            $("a:contains('عودة')").parent("div").addClass("col-md-offset-2");
+            $("a:contains('عودة')").parent("div").addClass("col-md-10");
+        }
+        $(document).on("keypress", ".numberInputValidate", function (event) {
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+        function goToByScroll(id) {
+            $('html,body').animate({ scrollTop: $("#" + id).offset().top }, 'slow');
+        }
+        $('.numberAndFloatInputValidate').on('input', function (event) {
+            this.value = this.value.replace(/[^0-9.]/g, '');
+        });
+
+    </script>
+    @RenderSection("Styles", required: false)
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

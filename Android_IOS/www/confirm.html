@@ -1,0 +1,44 @@
+﻿<div class="page" data-name="confirm">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="link icon-only GoToBackPage">
+                    <i class="f7-icons">chevron_left</i>
+                </a>
+            </div>
+            <div class="title hide-nav"><img src="img/logo.png" class="nav-logo"></div>
+            <div class="right ">
+                <a href="#" class="link icon-only" style="pointer-events: none;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content" style="background: #824ef6;">
+
+        <div class="page-holder">
+
+            <div class="holder-white text-center">
+                <img src="img/main-logo.png" class="center-logo">
+                <p class="white-p">يرجي إدخال رمز التفعيل المرسل الى الرقم</p>
+            </div>
+
+            <div class="change-num" style="border:0; border-radius:0;width: 250px;">
+                <input class="my-input ClientMobileInput" onkeypress='return isNumberKey(event);' value="{{ContentData.Phone}}" placeholder="{{js "localStorage.lang=='en' ? 'Phone Number' : 'رقم الهاتف'"}}" type="number" style="text-align: center;">
+                <a class="btn-change-num mobilesaveedit">{{js "localStorage.lang=='en' ? 'Change' : 'تغيير'"}}</a>
+            </div>
+
+
+            <div class="input-numbers">
+                <input maxlength="1" id="Code4" type="number" onkeypress='return isNumberKey(event);' onkeyup="moveOnMax(this, 'Code5')">
+                <input maxlength="1" id="Code3" type="number" onkeypress='return isNumberKey(event);' onkeyup="moveOnMax(this, 'Code4')">
+                <input maxlength="1" id="Code2" type="number" onkeypress='return isNumberKey(event);' onkeyup="moveOnMax(this, 'Code3')">
+                <input maxlength="1" id="Code1" type="number" onkeypress='return isNumberKey(event);' onkeyup="moveOnMax(this, 'Code2')">
+            </div>
+
+
+            <a class="btn-white CheckCodeBtn">{{js "localStorage.lang=='en' ? 'Confirm' : 'تأكيد'"}}</a>
+            <a class="creatacc-dark SendCodeAgainBtn">{{js "localStorage.lang=='en' ? 'Resend Confirmation Code' : 'إعادة إرسال كود التأكيد'"}}</a>
+        </div>
+    </div>
+</div>

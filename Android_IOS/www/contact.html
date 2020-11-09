@@ -1,0 +1,35 @@
+﻿<div class="page" data-name="contact">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="link icon-only back">
+                    <i class="f7-icons">chevron_left</i>
+                </a>
+            </div>
+            <div class="title" style="left: 0px;color: #fff;">
+                {{js "localStorage.lang=='en' ? 'Contact us' : 'اتصل بنا'"}}
+            </div>
+            <div class="right ">
+                <a href="#" class="link icon-only panel-open" data-panel="right">
+                    <i class="f7-icons">bars</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="page-content-gray">
+            <p class="page-title"><br /></p>
+            <div class="gray-holder contact-section">
+                <input class="my-input my-input" id="Name" placeholder="{{js "localStorage.lang=='en' ? 'Personal name' : 'الاسم الشخصي'"}}" type="text" value="">
+                <input class="my-input my-input" id="Email" placeholder="{{js "localStorage.lang=='en' ? 'Email' : 'البريد الالكتروني'"}}" type="text" value="">
+                <textarea id="SMS" placeholder="{{js "localStorage.lang=='en' ? 'Message' : 'الرسالة'"}}" class="my-input" style="padding:10px;border-style:solid;width:100%;border-radius:23px;border-color:#ededed;height:150px;border-width: 2px;"></textarea>
+                <a href="#" class="btn-blue SendContactUs">{{js "localStorage.lang=='en' ? 'Send' : 'ارسال'"}}</a>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

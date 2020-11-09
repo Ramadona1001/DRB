@@ -1,0 +1,191 @@
+﻿@model EF.Models.OrdersTb;
+@{
+    ViewBag.Title = "تقييم السائق";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+
+}
+
+<div class="content-heading">
+    <div>تقييم السائق<small></small></div>
+</div>
+
+<div class="card card-default">
+    <div class="card-heading"></div>
+    @if (Model != null && Model.Degree == 0)
+    {
+        <div class="card-body">
+
+            @using (Html.BeginForm("SaveRating", "Client", FormMethod.Post, new { @id = "LogForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4></h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                            @if (ViewBag.success != null && ViewBag.success != "")
+                            {
+                                <div class="alert alert-success alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.success </b></div>
+                            }
+                            @if (ViewBag.error != null && ViewBag.error != "")
+                            {
+                                <div class="alert alert-danger alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b> @ViewBag.error </b></div>
+                            }
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderNumber, "رقم الشحنة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OrderNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.OrderNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderItemsList, "الطرود", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @if (Model.OrderItemsList != null && Model.OrderItemsList.Count() > 0)
+                            {
+                                foreach (var item in Model.OrderItemsList)
+                                {
+                                    <span style="padding-left:5px" class="badge badge-info">@item</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientPhone, "رقم هاتفك المربوط بالشحنة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClientPhone, new { htmlAttributes = new { @class = "form-control", id = "MyPhone" } })
+                            @Html.ValidationMessageFor(model => model.ClientPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientConfirmCode, "كود التأكيد المرسل لهاتفك", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClientConfirmCode, new { htmlAttributes = new { @class = "form-control", id = "MyCode" } })
+                            @Html.ValidationMessageFor(model => model.ClientConfirmCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span id="str1" class="Ratestr fa fa-star "></span>
+                        <span id="str2" class="Ratestr fa fa-star "></span>
+                        <span id="str3" class="Ratestr fa fa-star "></span>
+                        <span id="str4" class="Ratestr fa fa-star "></span>
+                        <span id="str5" class="Ratestr fa fa-star "></span>
+
+                        <div class="rate-num NumberOfRate">
+                            5/5
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.Degree, new { @class = "form-control", id = "RatingDegreeHere" })
+                    @Html.HiddenFor(model => model.tokenId, new { @class = "form-control", })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div id="map" style="position: initial !important;height: 300px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="حفظ" onclick="formsubmit(); return false;" class="btn btn-sm btn-secondary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    else if (Model != null && Model.Degree > 0)
+    {
+        <div class="card-body">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                    <div class="alert alert-success alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b>تم التقييم بنجاح، شكراً لكم</b></div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card-body">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                    <div class="alert alert-danger alert-dismissible fade show"><button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><b>غير مسموح استعراض هذه الصفحة</b></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Styles{
+    <style>
+        .Ratestr {
+            color: #ccc;
+            cursor: pointer;
+            padding: 0 1px;
+            font-size: 16px;
+        }
+
+        .checkedSPAN {
+            color: orange !important;
+        }
+    </style>
+}
+@section scripts{
+    <script>
+        function RateNumberHere() {
+            var num = $(".checkedSPAN").length;
+            $(".NumberOfRate").html("" + num + "/5");
+            $("#RatingDegreeHere").val(num);
+        }
+        $(document).on("click", ".Ratestr", function () {
+            var id = $(this).attr("id");
+            if ($(this).hasClass("checkedSPAN")) { //remove to this one
+                if (id == "str5")
+                    $(this).removeClass("checkedSPAN");
+                else if (id == "str4") {
+                    $("#str5,#str4").removeClass("checkedSPAN");
+                }
+                else if (id == "str3") {
+                    $("#str5,#str4,#str3").removeClass("checkedSPAN");
+                }
+                else if (id == "str2") {
+                    $("#str5,#str4,#str3,#str2").removeClass("checkedSPAN");
+                }
+                else if (id == "str1") {
+                    $("#str5,#str4,#str3,#str2,#str1").removeClass("checkedSPAN");
+                }
+            }
+            else {//add to this one
+                if (id == "str1")
+                    $(this).addClass("checkedSPAN");
+                else if (id == "str2") {
+                    $("#str1,#str2").addClass("checkedSPAN");
+                }
+                else if (id == "str3") {
+                    $("#str1,#str2,#str3").addClass("checkedSPAN");
+                }
+                else if (id == "str4") {
+                    $("#str1,#str2,#str3,#str4").addClass("checkedSPAN");
+                }
+                else if (id == "str5") {
+                    $("#str5,#str4,#str3,#str2,#str1").addClass("checkedSPAN");
+                }
+            }
+            RateNumberHere();
+        })
+        function formsubmit() {
+
+            if ($("#RatingDegreeHere").val().trim() == "" || $("#RatingDegreeHere").val().trim() == "0" || $("#MyPhone").val().trim() == "" || $("#MyCode").val().trim() == "") {
+                swal("", "الرجاء التحقق من ادخال جميع الحقول");
+                return;
+            }
+
+            $("#LogForm").submit();
+        }
+    </script>
+}

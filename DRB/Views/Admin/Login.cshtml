@@ -1,0 +1,91 @@
+﻿@model VM.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Dizzlr</title>
+    <!-- =============== VENDOR STYLES ===============-->
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="~/AdminArea/vendor/fontawesome/css/font-awesome.min.css">
+    <!-- SIMPLE LINE ICONS-->
+    <link rel="stylesheet" href="~/AdminArea/vendor/simple-line-icons/css/simple-line-icons.css">
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="~/AdminArea/css/bootstrap.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="~/AdminArea/css/app.css" id="maincss">
+    <link rel="shortcut icon" href="~/AdminArea/css/fav/favicon.ico" />
+    <link href="~/AdminArea/css/CustomStyle2.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="block-center mt-xl wd-xl">
+            <!-- START panel-->
+            <div class="panel panel-dark panel-flat">
+                <div class="panel-heading text-center" style="margin: 50px 30px;">
+                    <a href="#">
+                        <img src="~/AdminArea/img/logo.png" style="height:80px;" alt="Image" class="block-center img-rounded">
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <p class="text-center pv"></p>
+                    <form method="post" id="loginForm" class="login-container" style="direction:rtl">
+
+                        <div class="form-group has-feedback">
+                            <input id="UserNameID" type="text" name="UserName" placeholder="إسم المستخدم" autocomplete="off" required class="form-control">
+                            <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input id="PasswordID" type="password" name="Password" placeholder="كلمة المرور" required class="form-control">
+                            <span class="fa fa-lock form-control-feedback text-muted"></span>
+                        </div>
+                        <div class="clearfix">
+                            <div class=" pull-left mt0" style="text-align:right">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.remember, new { @checked = "checked" })
+                                    @*<input type="checkbox" value="" name="Remember" id="Remember">*@
+                                    تذكرني
+                                </label>
+                            </div>
+                            <div class="pull-right">
+                                @*<a href="" class="text-muted">Forgot your password?</a>*@
+                            </div>
+                        </div>
+
+                        <button id="logbtn" type="submit" class="btn btn-block btn-primary mt-lg" style="background: #4052b5;outline: none !important;border: none;">
+                            تسجيل دخول
+                        </button>
+                        <br />
+                        <div class="text-center">
+                            <span class="label label-danger" style="color:red;display:@ViewBag.error">الرجاء التأكد من البريد الإلكتروني وكلمة المرور</span>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!-- END panel-->
+            <div class="p-lg text-center">
+                <span>&copy;</span>
+                <span>@DateTime.Now.Year</span>
+                <span>-</span>
+                <span>Dizzlr</span>
+            </div>
+        </div>
+    </div>
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <!-- JQUERY-->
+    <script src="~/AdminArea/vendor/jquery/dist/jquery.js"></script>
+    <!-- BOOTSTRAP-->
+    <script src="~/AdminArea/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/AdminArea/modules/admin-auth-module.js"></script>
+
+
+</body>
+
+</html>
+

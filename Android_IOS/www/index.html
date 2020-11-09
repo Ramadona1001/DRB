@@ -1,0 +1,828 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <title>drb</title>
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <link rel="stylesheet" href="css/framework7.bundle.rtl.min.css" id="arabic-framework">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="" id="arabic-style">
+    <style>
+        .statusbar {
+            background: #ffffff !important
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="statusbar"></div>
+        <div class="panel panel-right panel-cover my-panel" style="z-index: 99999999;">
+            <div class="page">
+                <div class="page-content" style="padding: 0;">
+                    <div class="sidebar-img">
+                        <img src="img/side-logo.png" class="">
+                    </div>
+                    <div class="list links-list sidebar-links">
+                        <ul>
+                            <li>
+                                <a class="GoToHomePage panel-close">
+                                    <i class="f7-icons">house</i> <span class="ChangeLang" data-en="Home" data-ar="الرئيسية"></span>
+                                </a>
+                            </li>
+                            <li class="GoToCompleteProfile AppearAfterLoginForMerchant">
+                                <a class="panel-close">
+                                    <i class="f7-icons">person_crop_circle_badge_checkmark</i> <span class="ChangeLang" data-en="ملفي الشخصي" data-ar="ملفي الشخصي"> </span>
+                                </a>
+                            </li>
+                            <li class="GoToCompleteProfile AppearAfterLoginForDriver">
+                                <a class="panel-close">
+                                    <i class="f7-icons">person_crop_circle_badge_checkmark</i> <span class="ChangeLang" data-en="نطاقي الجغرافي" data-ar="نطاقي الجغرافي"> </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="panel-close GotoAboutPage">
+                                    <i class="f7-icons">device_phone_portrait</i> <span class="ChangeLang" data-ar="عن التطبيق" data-en="About App"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="panel-close" href="/contact/">
+                                    <i class="f7-icons">phone</i> <span class="ChangeLang" data-en="Contact us" data-ar="اتصل بنا"> </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="LogoutLinkBtn panel-close">
+                                    <i class="f7-icons">escape</i> <span class="ChangeLang" data-en="Logout" data-ar="خروج"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view view-main view-init safe-areas" data-url="/">
+            <div class="page" data-name="index">
+
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a class="link icon-only">
+                            </a>
+                        </div>
+                        <div class="title"><img src="img/logo.png" class="nav-logo"></div>
+                        <div class="right ">
+
+                            <a href="#" class="link icon-only panel-open AppearAfterLogin" data-panel="right">
+                                <i class="f7-icons">bars</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-content home-container infinite-scroll-content infinite-scroll-top infinite-scroll-content-home">
+                    <div class="card skeleton-text skeleton-effect-fade">
+                        <div class="card-header">Card Header</div>
+                        <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                        <div class="card-footer">Card Footer</div>
+                    </div>
+                    <div class="card skeleton-text skeleton-effect-fade">
+                        <div class="card-header">Card Header</div>
+                        <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                        <div class="card-footer">Card Footer</div>
+                    </div>
+                </div>
+
+                <ul class="fixed-footer AppearAfterLoginForMerchant">
+                    <li class="goToNewOrder"><img src="img/truck.png"><span>طلب جديد</span></li>
+                    <li class="goToTrackingOrders"><img src="img/track.png"><span>تتبع</span></li>
+                    <li class="goToOrdersList"><img src="img/money.png"><span>الاستحقاقات</span></li>
+                </ul>
+
+                <ul class="fixed-footer AppearAfterLoginForDriver">
+                    <li class="active"><img src="img/order.png"><span>الطلبات</span></li>
+                    <li class="goToDriverBalanceLog"><img src="img/money.png"><span>المستحقات</span></li>
+                    <li class="goToDriverReports"><img src="img/chart.png"><span>التقارير</span></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--templates-->
+    <script id="Filter-popup-template" type="text/template">
+        <div class="popup popup-filter my-popup MyFilterPopup">
+            <div class="Xblock">
+                <div class="popup-head">
+                    <div class="title-popup">
+                        <i class="f7-icons">slider_horizontal_3</i> <span>{{title1}}</span>
+                    </div>
+                    <a class="btn-right popup-close" href="#"><i class="f7-icons">xmark</i></a>
+                </div>
+                <div class="block" style="padding: 0;">
+                    <div class="" style="margin: 0;">
+                        <ul class="ul-container-scroll">
+                            <div class="input-holder">
+                                <textarea type="text" class="my-input OrderCancelReasonArea" style="height:100px" placeholder="{{js "localStorage.lang=='en' ? 'سبب الإلغاء' : 'سبب الإلغاء'"}}"></textarea>
+                            </div>
+
+                            <div class="btn-filter-save ConfirmCancelOrderBtn" data-id="{{id}}">
+                                <a href="#" class="btn-blue">
+                                    <span class="ChangeLang">{{title3}}</span>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="order-packageinfo-template" type="text/template">
+        <div class="popup popup-tablet-fullscreen myOrderPackageInfoPopup">
+            <div class="view">
+                <div class="page" data-name="intro">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left">
+                                <a class="link icon-only popup-close">
+                                    <i class="f7-icons">chevron_left</i>
+                                </a>
+                            </div>
+                            <div class="title" style="left: 0px;color: #fff;">اضافة طرد</div>
+                            <div class="right ">
+                                <a href="#" class="link icon-only" style="pointer-events: none;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-holder">
+
+                            <div class="input-holder">
+                                <select class="my-select SelectedPackageSizePopup" id="PackageSizePopupId">
+                                    <option value="0">حجم الطرد</option>
+                                </select>
+                            </div>
+
+                            <div class="input-holder">
+                                <select class="my-select SelectedCatPopup" id="CatPopupId">
+                                    <option value="0">النوع</option>
+                                </select>
+                            </div>
+
+                            <a href="#" class="btn-blue SavePackageInfoBtn" data-id="{{id}}">{{js "localStorage.lang=='en' ? 'Save' : 'حفظ'"}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="order-payment-template" type="text/template">
+        <div class="popup popup-tablet-fullscreen myOrderPaymentPopup">
+            <div class="view">
+                <div class="page" data-name="intro">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left">
+                                <a class="link icon-only popup-close">
+                                    <i class="f7-icons">chevron_left</i>
+                                </a>
+                            </div>
+                            <div class="title" style="left: 0px;color: #fff;">طرق الدفع</div>
+                            <div class="right ">
+                                <a href="#" class="link icon-only" style="pointer-events: none;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-holder">
+                            {{#if wallet}}
+                            <div class="gray-holder">
+                                <p class="page-title-div"> المبلغ المطلوب <a class="btn-filter totalNeedToPay" style="color: #824ef6;"></a></p>
+                                <div class="packages-list-container">
+
+                                </div>
+                            </div>
+                            {{/if}}
+                            <div class="buy-item paymenttypehere" data-id="1" data-name="مدى">
+                                <img src="img/mada.png">
+                                <p>مدي</p>
+                            </div>
+
+                            <div class="buy-item paymenttypehere" data-id="2" data-name="بطاقة ائتمانية">
+                                <img src="img/visa.png">
+                                <p>بطاقة ائتمانية</p>
+                            </div>
+
+                            <div class="buy-item paymenttypehere" data-id="3" data-name="Apple Pay">
+                                <img src="img/apple.png">
+                                <p>Apple Pay</p>
+                            </div>
+                            {{#if wallet}}
+                            <div class="buy-item paymenttypehere balance-item" data-balance="0" data-price="0" data-id="4" data-name="المحفظة">
+                                <img src="img/wallet.png">
+                                <p>
+                                    المحفظة
+                                    <span class="wallet-num"></span>
+                                </p>
+                            </div>
+                            {{/if}}
+                            <a href="#" class="btn-blue SaveOrderPaymentMethod" data-id="{{id}}">{{js "localStorage.lang=='en' ? 'Confirm' : 'تأكيد'"}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="map-template" type="text/template">
+        <div class="popup popup-tablet-fullscreen myMapPopup">
+            <div class="view">
+                <div class="page" data-name="intro">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left">
+                                <a class="link icon-only popup-close">
+                                    <i class="f7-icons">chevron_left</i>
+                                </a>
+                            </div>
+                            <div class="title" style="left: 0px;color: #fff;">اضافة مستودع</div>
+                            <div class="right ">
+                                <a href="#" class="link icon-only" style="pointer-events: none;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-holder" style="padding: 0 0 180px;">
+                            <iframe id="Mymap" class="map-full-page-select" src="https://maps.dizzlr.co/map.aspx?set=yes&amp;location=24.78523,46.6869141&amp;key=" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <div class="details-holder q-holder" style="height: 270px;">
+                        <span class="collaps-details-holder">
+                            <i class="f7-icons">map_pin_ellipse</i>
+                        </span>
+                        <ul>
+                            <div class="input-holder">
+                                <input type="text" class="my-input StoreFullName" placeholder="{{js "localStorage.lang=='en' ? 'اسم المستودع' : 'اسم المستودع'"}}">
+                            </div>
+                            <div class="input-holder">
+                                <select class="my-select SelectedCity" id="mapcity">
+                                    <option value="0">المدينة</option>
+                                </select>
+                            </div>
+                            <div class="input-holder">
+                                <input type="text" class="my-input StoreAddress" placeholder="{{js "localStorage.lang=='en' ? 'Store Address' : 'عنوان المستودع'"}}">
+                            </div>
+
+                            <a href="#" class="btn-blue SaveStoreBtn" data-id="{{id}}">{{js "localStorage.lang=='en' ? 'Save' : 'حفظ'"}}</a>
+                            <br />
+                            <br />
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="mapcircle-template" type="text/template">
+        <div class="popup popup-tablet-fullscreen myMapCirclePopup">
+            <div class="view">
+                <div class="page" data-name="intro">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left">
+                                <a class="link icon-only popup-close">
+                                    <i class="f7-icons">chevron_left</i>
+                                </a>
+                            </div>
+                            <div class="title" style="left: 0px;color: #fff;">نطاقك الجغرافي</div>
+                            <div class="right ">
+                                <a href="#" class="link icon-only" style="pointer-events: none;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-holder" style="padding: 0 0 180px;">
+                            <iframe id="MymapCircle" class="mapCircle-full-page-select" src="https://maps.dizzlr.co/map.aspx?set=yes&amp;location=24.78523,46.6869141&amp;key=" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <div class="details-holder q-holder" style="height: 100px;">
+                        <span class="collaps-details-holder">
+                            <i class="f7-icons">map_pin_ellipse</i>
+                        </span>
+                        <ul>
+                            <a href="#" class="btn-blue SaveMapCircleBtn">{{js "localStorage.lang=='en' ? 'Save' : 'حفظ'"}}</a>
+                            <br />
+                            <br />
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="DropList-Page-template" type="text/template">
+        {{#if ChooseTitle}}
+        <option value="0">{{ChooseTitle}}</option>
+        {{/if}}
+        {{#if FAQs}}
+        {{#each FAQs}}
+        <option value="{{this.id}}">{{this.nameAr}}</option>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script id="Stores-Section-template" type="text/template">
+        {{#if FAQs}}
+        {{#each FAQs}}
+        <div class="operation-item store-section-item" data-id="{{this.id}}" data-address="{{this.address}}" data-nameAr="{{this.nameAr}}" data-cityName="{{this.cityName}}" data-cityid="{{this.cityId}}" data-lat="{{this.lat}}" data-lng="{{this.lng}}">
+            <div class="item-info">
+                <div class="item-info-holder">
+                    <span class="store-cat">{{this.nameAr}}</span>
+                    <span class="store-name">{{this.cityName}}</span>
+                    <span class="store-date">{{this.address}}</span>
+                </div>
+            </div>
+            <div class="item-price">
+                <a href="#" class="edit-store editbtn_" data-id="{{this.id}}"><i class="f7-icons">gear_alt</i></a>
+                <a href="#" class="delete-store delbtn_" data-id="{{this.id}}"><i class="f7-icons">trash</i></a>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        {{#each FAQsPackages}}
+        <div class="operation-item orderPackage-section-item" data-id="{{this.id}}" data-packageName="{{this.packageName}}" data-catName="{{this.catName}}" data-packageTypeIdFK="{{this.packageTypeIdFK}}" data-catIdFK="{{this.catIdFK}}">
+            <div class="item-info">
+                <div class="item-info-holder">
+                    <span class="store-cat">النوع: {{this.catName}}</span>
+                    <span class="store-name">الحجم: {{this.packageName}}</span>
+                </div>
+            </div>
+            <div class="item-price">
+                <a href="#" class="edit-orderPackage editbtn_" data-id="{{this.id}}"><i class="f7-icons">gear_alt</i></a>
+                <a href="#" class="delete-orderPackage delbtn_" data-id="{{this.id}}"><i class="f7-icons">trash</i></a>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+
+    </script>
+
+    <script id="Merchant-home-template" type="text/template">
+        <div class="page-holder">
+            <ul class="order-number-tabs">
+                <li>
+                    الطلبات الحالية
+                    <span>{{currentOrders}}</span>
+                </li>
+                <li>
+                    الطلبات المنتهية
+                    <span>{{finishedOrders}}</span>
+                </li>
+                <li>
+                    الطلبات التالية
+                    <span>{{nextOrders}}</span>
+                </li>
+            </ul>
+            <div class="details-map" style="border-radius: 0px !important;">
+                <div class="map" style="border: 0;height: 100vw;width:100vw">
+
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="Driver-home-template" type="text/template">
+        <div class="page-holder">
+
+            <div class="page-header">
+                <a href="#tab-new" class="tab-link  my-tabs tab-link-active">جديد</a>
+                <a href="#tab-current" class="tab-link my-tabs ">نشط</a>
+                <a href="#tab-old" class="tab-link my-tabs ">منتهي</a>
+            </div>
+
+            <div class="tabs-animated-wrap" style="margin-top: -60px;">
+                <div class="tabs">
+                    <div id="tab-new" class="page-content tab tab-active" style="padding: 0;background: transparent;">
+
+                        <div class="card skeleton-text skeleton-effect-fade">
+                            <div class="card-header">Card Header</div>
+                            <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                        <div class="card skeleton-text skeleton-effect-fade">
+                            <div class="card-header">Card Header</div>
+                            <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                    </div>
+                    <div id="tab-current" class="page-content tab" style="padding: 0;background: transparent;">
+                        <div class="card skeleton-text skeleton-effect-fade">
+                            <div class="card-header">Card Header</div>
+                            <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                        <div class="card skeleton-text skeleton-effect-fade">
+                            <div class="card-header">Card Header</div>
+                            <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                    </div>
+                    <div id="tab-old" class="page-content tab" style="padding: 0;background: transparent;">
+                        <div class="card skeleton-text skeleton-effect-fade">
+                            <div class="card-header">Card Header</div>
+                            <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                        <div class="card skeleton-text skeleton-effect-fade">
+                            <div class="card-header">Card Header</div>
+                            <div class="card-content card-content-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preloader infinite-scroll-preloader parteners-page-preloader-new" style="display:none" data-nextpgnum="1"></div>
+            <div class="preloader infinite-scroll-preloader parteners-page-preloader-current" style="display:none" data-nextpgnum="1"></div>
+            <div class="preloader infinite-scroll-preloader parteners-page-preloader-old" style="display:none" data-nextpgnum="1"></div>
+
+        </div>
+    </script>
+
+    <script id="Orders-List-template" type="text/template">
+        {{#if FAQS}}
+        {{#each FAQS}}
+        <li class="q-item q-item-profile accordion-item partners-item one-order-item" data-id="{{this.id}}">
+            <div href="#" class="item-content item-link">
+                <div class="order-name">
+                    <p class="name">طلب {{@index+1}}</p>
+                    <p class="num">
+                        رقم الشحنة
+                        <span>{{this.orderNumber}}</span>
+                    </p>
+                </div>
+                <div class="order-progress">
+                    <p class="progress-title">
+                        <span>
+                            تاريخ الاستلام
+                            <br>
+                            {{this.packagesTakenDateStr}}
+                        </span>
+
+                        <span>
+                            تاريخ التسليم
+                            <br>
+                            {{this.deliveryDateStr}}
+                        </span>
+                    </p>
+
+                    <div class="progress-line-holder">
+
+                        <div class="progress-line">
+                            <span class="precent" style="width:{{this.percentage}}%;"><img src="{{this.icon}}"></span>
+                        </div>
+                        <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="q-dec accordion-item-content" style="" aria-hidden="true">
+                <div class="q-item-timeline openInMap" data-lat="{{this.storeLat}}" data-lng="{{this.storeLng}}">عنوان الاستلام : {{this.storeCityNameAr}} - {{this.storeNameAr}}</div>
+                {{#if this.clientLat}}
+                <div class="q-item-timeline openInMap" data-lat="{{this.clientLat}}" data-lng="{{this.clientLng}}">عنوان التسليم : {{this.clientCityNameAr}}</div>
+                {{/if}}
+                <div class="q-item-timeline" style="color:{{this.color}}">
+                    الحالة : {{this.statusNameAr}}
+                    {{#unless this.cancelReson}}
+                    <div class="chip color-pink cancel-order-btn" data-id="{{this.id}}" style="background-color:darkred;">
+                        <div class="chip-label">الغاء الطلب</div>
+                    </div>
+                    {{/unless}}
+                </div>
+                {{#if this.clientPhone}}
+                <div class="q-item-timeline callNumber" data-phone="{{this.clientPhone}}">
+                    رقم هاتف العميل :
+                    <div class="chip chip-custom callNumber" data-phone="{{this.clientPhone}}">
+                        <div class="chip-media bg-color-blue" style="background-color: #824ef6 !important;">
+                            <i class="icon f7-icons">phone_fill</i>
+                        </div>
+                        <div class="chip-label custom-chip-label">{{this.clientPhone}}</div>
+                    </div>
+                </div>
+                {{/if}}
+                {{#if this.driverName}}
+                <div class="q-item-timeline">
+                    معلومات المندوب :
+                    <div class="chip chip-custom callNumber" data-phone="{{this.driverMobile}}">
+                        <div class="chip-media bg-color-blue" style="background-color: #824ef6 !important;">
+                            <i class="icon f7-icons">phone_fill</i>
+                        </div>
+                        <div class="chip-label custom-chip-label">{{this.driverName}}</div>
+                    </div>
+                </div>
+                {{/if}}
+                {{#if this.orderItemsList}}
+                <div class="q-item-timeline">
+                    الطرود :
+                    {{#each this.orderItemsList}}
+                    <div class="chip">
+                        <div class="chip-label">{{this}}</div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+                {{#if this.cancelReson}}
+                <div class="q-item-timeline">
+                    سبب الإلغاء :
+                    {{this.cancelReson}}
+                </div>
+                {{/if}}
+
+            </div>
+        </li>
+        {{#if @last}}
+        <br />
+        <br />
+        {{/if}}
+        {{/each}}
+        {{else}}
+        <div class="empty-holder">
+            <br />
+            <i class="f7-icons">bin_xmark</i>
+            <p class="ChangeLang" data-ar="لا يوجد طلبات حالياً" data-en="Oredrs not found"></p>
+        </div>
+        {{/if}}
+    </script>
+
+    <script id="Orders-ListPrice-template" type="text/template">
+        {{#if FAQS}}
+        {{#each FAQS}}
+        <div class="buy-timeline-item item-{{this.color}}">
+            <div class="head-info">
+                {{#if this.transactionNameAr}}
+                <span class="Status" style="background:{{this.color}}">{{this.transactionNameAr}}</span>
+                {{/if}}
+                <span class="price">{{this.orderPrice}} ريال</span>
+            </div>
+            <div class="info-two">
+                <p class="time-num">
+                    <span>{{this.creationDateStr}}</span>
+                    {{#if this.orderNumber}}
+                    <span class="fullwidth">رقم الطلب {{this.orderNumber}}</span>
+                    {{/if}}
+                </p>
+                {{#if this.statusNameAr}}
+                <span class="hint">{{this.statusNameAr}}</span>
+                {{/if}}
+
+            </div>
+        </div>
+        {{#if @last}}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        {{/if}}
+        {{/each}}
+        {{else}}
+        <div class="empty-holder">
+            <br />
+            <i class="f7-icons">bin_xmark</i>
+            <p class="ChangeLang" data-ar="لا يوجد بيانات حالياً" data-en="Data not found"></p>
+        </div>
+        {{/if}}
+    </script>
+
+    <script id="Driver-OrderList-template" type="text/template">
+        {{#if FAQS}}
+        {{#each FAQS}}
+        <div class="order-item">
+            <div class="order-item-head">
+                رقم الشحنة {{this.orderNumber}}
+            </div>
+            <div class="q-item-timeline">
+                تاريخ الاستلام {{this.packagesTakenDateStr}}
+            </div>
+            <div class="q-item-timeline">
+                تاريخ التسليم {{this.deliveryDateStr}}
+            </div>
+            {{#if this.orderPriceAfterAppCommission}}
+            <div class="q-item-timeline">
+                التكلفة :
+                {{this.orderPriceAfterAppCommission}} ريال
+            </div>
+            {{/if}}
+            <div class="q-item-timeline openInMap" data-lat="{{this.storeLat}}" data-lng="{{this.storeLng}}">
+                عنوان الاستلام :
+                <div class="chip chip-custom">
+                    <div class="chip-media bg-color-blue" style="background-color: #824ef6 !important;">
+                        <i class="icon f7-icons">location_fill</i>
+                    </div>
+                    <div class="chip-label custom-chip-label">{{this.storeCityNameAr}} - {{this.storeNameAr}}</div>
+                </div>
+            </div>
+            {{#if this.clientLat}}
+            <div class="q-item-timeline openInMap" data-lat="{{this.clientLat}}" data-lng="{{this.clientLng}}">
+                عنوان التسليم :
+                <div class="chip chip-custom">
+                    <div class="chip-media bg-color-blue" style="background-color: #824ef6 !important;">
+                        <i class="icon f7-icons">location_fill</i>
+                    </div>
+                    <div class="chip-label custom-chip-label">{{this.clientCityNameAr}}</div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if this.clientPhone}}
+            <div class="q-item-timeline callNumber" data-phone="{{this.clientPhone}}">
+                رقم هاتف العميل :
+                <div class="chip chip-custom callNumber" data-phone="{{this.clientPhone}}">
+                    <div class="chip-media bg-color-blue" style="background-color: #824ef6 !important;">
+                        <i class="icon f7-icons">phone_fill</i>
+                    </div>
+                    <div class="chip-label custom-chip-label">{{this.clientPhone}}</div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if this.orderItemsList}}
+            <div class="q-item-timeline">
+                الطرود :
+                {{#each this.orderItemsList}}
+                <div class="chip">
+                    <div class="chip-label">{{this}}</div>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+            {{#if this.cancelReson}}
+            <div class="q-item-timeline">
+                سبب الإلغاء :
+                {{this.cancelReson}}
+            </div>
+            {{/if}}
+
+            <div class="order-item-footer">
+                <span class="status" style="color:{{this.color}}">{{this.statusNameAr}}</span>
+                {{#js_if "this.statusIdFK===2"}}
+                <span>
+                    <a href="#" class="DriverManageConfirm" data-id="{{this.id}}" data-agree="true">قبول</a>
+                    <a href="#" class="DriverManageConfirm" data-id="{{this.id}}" data-agree="false" style="background:darkred !important">رفض</a>
+                </span>
+                {{/js_if}}
+                {{#js_if "this.statusIdFK===3"}}
+                <span>
+                    <a href="#" class="DriverManageOrderSts" data-id="{{this.id}}" data-sts="3">تم استلام الشحنة</a>
+                </span>
+                {{/js_if}}
+                {{#js_if "this.statusIdFK===4"}}
+                <span>
+                    <a href="#" class="DriverManageOrderSts" data-id="{{this.id}}" data-sts="4">تم التسليم للعميل</a>
+                </span>
+                {{/js_if}}
+            </div>
+        </div>
+
+        {{/each}}
+        {{else}}
+        <div class="empty-holder" style="margin-top:100px !important">
+            <br />
+            <i class="f7-icons">bin_xmark</i>
+            <p class="ChangeLang" data-ar="لا يوجد طلبات حالياً" data-en="Oredrs not found"></p>
+        </div>
+        {{/if}}
+    </script>
+
+    <script id="report-template" type="text/template">
+        <div class="page-holder">
+
+            <div class="page-header">
+                <p class="report-title">
+                    <span class="name">نظرة عامة</span>
+
+                    <div class="option">
+                        <a>تخصيص</a>
+                        <a>تحميل</a>
+                    </div>
+                </p>
+            </div>
+
+            <div class="two-item-holder">
+                <div class="two-item">
+                    <p class="title">عدد ساعات التسليم</p>
+                    <div class="Charts-holder">
+                        <svg width="50" height="50" class="chart cavg">
+                            <circle r="20" cx="25" cy="25" class="pie" style="stroke-dasharray: 13.75, 125; stroke:#824ef6;"></circle>
+                        </svg>
+                    </div>
+                    <p class="result">8 ساعات</p>
+                </div>
+
+                <div class="two-item">
+                    <p class="title">معدل استثمار الوقت</p>
+                    <img src="img/back-money.png" class="img">
+                    <p class="result">كل 20 دقيقه - 50 ريال</p>
+                </div>
+            </div>
+
+            <div class=" q-holder" style="padding-top: 15px;">
+                <ul>
+                    <li class="q-item q-item-profile accordion-item">
+                        <div href="#" class="item-content item-link">
+                            <p class="q-title">المستوى</p>
+                            <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                        </div>
+                        <div class="q-dec accordion-item-content" style="" aria-hidden="true">
+                            <div class="q-item-timeline numOfPoints"></div>
+                        </div>
+                    </li>
+
+                    <li class="q-item q-item-profile accordion-item">
+                        <div href="#" class="item-content item-link">
+                            <p class="q-title">المكافآت و المزايا</p>
+                            <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                        </div>
+                        <div class="q-dec accordion-item-content" style="" aria-hidden="true">
+                            {{#if totalPoints}}
+                            <div class="q-item-timeline numOfPoints">عدد النقاط: {{totalPoints}}</div>
+                            {{else}}
+                            <div class="q-item-timeline numOfPoints">عدد النقاط: 0</div>
+                            {{/if}}
+                        </div>
+                    </li>
+
+                    <li class="q-item q-item-profile accordion-item">
+                        <div href="#" class="item-content item-link">
+                            <p class="q-title">التقييم</p>
+                            <span class="q-icon"><i class="f7-icons">chevron_down</i></span>
+                        </div>
+                        <div class="q-dec accordion-item-content" style="" aria-hidden="true">
+                            <ul class="ratestars">
+                                {{#if avgRatings}}
+                                <li class="{{#js_if "this.avgRatings===1"}}active-star{{/js_if}}"><i class="f7-icons">star_fill</i></li>
+                                <li class="{{#js_if "this.avgRatings===2"}}active-star{{/js_if}}"><i class="f7-icons">star_fill</i></li>
+                                <li class="{{#js_if "this.avgRatings===3"}}active-star{{/js_if}}"><i class="f7-icons">star_fill</i></li>
+                                <li class="{{#js_if "this.avgRatings===4"}}active-star{{/js_if}}"><i class="f7-icons">star_fill</i></li>
+                                <li class="{{#js_if "this.avgRatings===5"}}active-star{{/js_if}}"><i class="f7-icons">star_fill</i></li>
+                                {{else}}
+                                <li class="empty"><i class="f7-icons">star_fill</i></li>
+                                <li class="empty"><i class="f7-icons">star_fill</i></li>
+                                <li class="empty"><i class="f7-icons">star_fill</i></li>
+                                <li class="empty"><i class="f7-icons">star_fill</i></li>
+                                <li class="empty"><i class="f7-icons">star_fill</i></li>
+                                {{/if}}
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="Charts-holder">
+            </div>
+        </div>
+    </script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="js/routes.js"></script>
+
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/modules/map-multiPoint-module.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <script type="text/javascript" src="js/templates.config.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <!--Put your other modules here-->
+    <script type="text/javascript" src="js/modules/authenticate-module.js"></script>
+    <script type="text/javascript" src="js/modules/navigation-module.js"></script>
+
+    <script type="text/javascript" src="js/modules/completeData-module.js"></script>
+
+    <script type="text/javascript" src="js/modules/merchantOrders-module.js"></script>
+    <script type="text/javascript" src="js/modules/merchantTracking-module.js"></script>
+    <script type="text/javascript" src="js/modules/merchantbalancecharge-module.js"></script>
+
+    <script type="text/javascript" src="js/modules/driverTracking-balance-report-module.js"></script>
+
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWfNs9qtoiVLuXE8TPv-Hg3IvyVDxX0nc&callback=initMapload"></script>
+
+
+</body>
+
+</html>

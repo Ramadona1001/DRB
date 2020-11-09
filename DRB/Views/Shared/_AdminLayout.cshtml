@@ -1,0 +1,169 @@
+﻿@{
+    var theme = Context.Request.Cookies.FirstOrDefault(c => c.Key == "UserTheme").Value;
+    if (theme == null || theme == "")
+    {
+        theme = "AdminArea/css/theme-g.css";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin App">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <title> @ViewBag.Title </title>
+    <!-- =============== VENDOR STYLES ===============-->
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/brands.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/regular.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/solid.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/animate.css/animate.css" rel="stylesheet" />
+    <link href="~/AdminArea/Vendor/whirl/dist/whirl.css" rel="stylesheet" />
+    <link href="~/AdminArea/css/awsf.css" rel="stylesheet" />
+
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link href="~/AdminArea/css/bootstrap-rtl.css" rel="stylesheet" type="text/css" id="bscss" />
+    <link href="~/AdminArea/Vendor/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <!-- =============== APP STYLES ===============-->
+    <link href="~/AdminArea/css/app-rtl.css" rel="stylesheet" type="text/css" id="maincss" />
+    <link href="~/@theme" rel="stylesheet" id="autoloaded-stylesheet" />
+    <link href="~/AdminArea/css/CustomStyle2.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link href="~/css/awsf.css" rel="stylesheet" />
+    <style>
+        .brand-logo-collapsed .img-fluid, .brand-logo .img-fluid {
+            height: 42px !important;
+            border-radius: 7px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+            @Html.Partial("_TopNavbar")
+        </header>
+        <!-- sidebar-->
+        <aside class="aside-container">
+            @Html.Partial("_Sidebar")
+        </aside>
+        <!-- offsidebar-->
+        <aside class="offsidebar d-none">
+            @Html.Partial("_Offsidebar")
+        </aside>
+        <!-- Main section-->
+        <section class="section-container">
+            <!-- Page content-->
+            <div class="content-wrapper">
+                @RenderBody()
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="ChooseTheme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">اختر لون الموقع</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="row row-flush mb-2">
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-a.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-info"></span><span class="color bg-info-light"></span></span><span class="color bg-white"></span></label></div>
+                                        </div>
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-b.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-green"></span><span class="color bg-green-light"></span></span><span class="color bg-white"></span></label></div>
+                                        </div>
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-c.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-purple"></span><span class="color bg-purple-light"></span></span><span class="color bg-white"></span></label></div>
+                                        </div>
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-d.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-danger"></span><span class="color bg-danger-light"></span></span><span class="color bg-white"></span></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-flush mb-2">
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-e.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-info-dark"></span><span class="color bg-info"></span></span><span class="color bg-gray-dark"></span></label></div>
+                                        </div>
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-f.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-green-dark"></span><span class="color bg-green"></span></span><span class="color bg-gray-dark"></span></label></div>
+                                        </div>
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-g.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-purple-dark"></span><span class="color bg-purple"></span></span><span class="color bg-gray-dark"></span></label></div>
+                                        </div>
+                                        <div class="col mb-2">
+                                            <div class="setting-color"><label data-load-css="AdminArea/css/theme-h.css"><input type="radio" name="setting-theme"><span class="icon-check"></span><span class="split"><span class="color bg-danger-dark"></span><span class="color bg-danger"></span></span><span class="color bg-gray-dark"></span></label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page footer-->
+        <footer class="footer-container">
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <script src="~/AdminArea/Vendor/modernizr/modernizr.custom.js"></script>
+    <script src="~/AdminArea/Vendor/js-storage/js.storage.js"></script>
+    <script src="~/AdminArea/Vendor/screenfull/dist/screenfull.js"></script>
+    <script src="~/AdminArea/Vendor/jquery/dist/jquery.js"></script>
+    <script src="~/AdminArea/vendor/popper.js/dist/umd/popper.js"></script>
+    <script src="~/AdminArea/Vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/AdminArea/Vendor/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- =============== APP SCRIPTS ===============-->
+    <script src="~/AdminArea/js/app.js"></script>
+    <script src="~/AdminArea/js/custom-awsf.js"></script>
+    <script src="~/AdminArea/js/bootbox.min.js"></script>
+    <script src="~/js/custom-awsf.js"></script>
+    <script src="~/AdminArea/js/global.js"></script>
+    <link href="~/AdminArea/ajax/jquery.gritter.css" rel="stylesheet" />
+    <script src="~/AdminArea/ajax/jquery.gritter.min.js"></script>
+    <script>
+        if ($("a:contains('عودة')").length > 0) {
+            $("a:contains('عودة')").addClass("ReturnCls")
+            $("a:contains('عودة')").parent("div").addClass("col-md-offset-2");
+            $("a:contains('عودة')").parent("div").addClass("col-md-10");
+        }
+        $(document).on("keypress", ".numberInputValidate", function (event) {
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+        function goToByScroll(id) {
+            $('html,body').animate({ scrollTop: $("#" + id).offset().top }, 'slow');
+        }
+        $('.numberAndFloatInputValidate').on('input', function (event) {
+            this.value = this.value.replace(/[^0-9.]/g, '');
+        });
+
+        $(function () {
+            if (!localStorage.chooseTheme) {
+                localStorage.chooseTheme = true;
+                $('#ChooseTheme').appendTo('body').modal('show');
+            }
+        });
+
+    </script>
+    @RenderSection("Styles", required: false)
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
