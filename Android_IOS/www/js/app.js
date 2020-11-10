@@ -29,8 +29,8 @@ var app = new Framework7({
             APiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             hosting: {
                 AppUrl: '',
-                //ApiUrl: 'https://darbapi.dizzlr.co/api', //real api url
-                ApiUrl: 'https://localhost:44323/api'
+               ApiUrl: 'https://darbapi.dizzlr.co/api', //real api url
+                //ApiUrl: 'https://localhost:44323/api'
             },
             indexLoaded: false,
             deviceLoaded: false
